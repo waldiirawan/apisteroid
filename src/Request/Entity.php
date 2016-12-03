@@ -14,22 +14,26 @@ class Entity
             ['id', 'updated_at', 'created_at']
         ];
         $optionDefault = array_merge_recursive($optionDefault, $option);
-        $obj = json_decode($obj);
-        if(!is_object($obj)) {
-            throw new \Exception("Opps, cannot get json object!");
-            return false;
+        if( is_string($obj) && is_object(json_decode($obj, true))) {
+            $obj = json_decode($obj);
+            if(!is_object($obj)) {
+                throw new \Exception("Opps, cannot get json object!");
+                return false;
+            }
+        } else {
+            $obj = (object) $obj;
         }
         if(!is_object($collection)) {
             throw new \Exception("Opps, cannot get collection object!");
             return false;
         }
-        $collectionAttributes = $collection->getAttributes();
+        $collectionAttributes = $collection->getFillable();
         foreach ($collectionAttributes as $key => $value) {
-            if (property_exists($obj, $key)) {
-                if (in_array($key, $optionDefault['ignore'])) {
+            if (property_exists($obj, $value)) {
+                if (in_array($key, $optionDefault['ignore'], TRUE)) {
                     // do nothing
                 } else {
-                    $collection->{$key} = $obj->{$key};
+                    $collection->{$value} = $obj->{$value};
                 }
             }
         }
