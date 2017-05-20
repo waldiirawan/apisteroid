@@ -10,10 +10,11 @@ class Jsteroid
         'timestamp' => NULL,
         'environment' => NULL,
         'data' => NULL,
-        'response' => [
+        'exception' => NULL,
+        'message' => NULL,
+        'status' => [
             'code' => 500,
             'description' => 'Internal Server Error',
-            'message' => NULL
         ]
     ];
 
