@@ -11,6 +11,11 @@ class Jsteroid
         'environment' => NULL,
         'data' => NULL,
         'exception' => NULL,
+        'message' => NULL,
+        'status' => [
+            'code' => 500,
+            'description' => 'Internal Server Error',
+        ]
     ];
 
     public static function get($CompositeKey = NULL)
