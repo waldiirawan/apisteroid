@@ -10,11 +10,7 @@ class Jsteroid
         'timestamp' => NULL,
         'environment' => NULL,
         'data' => NULL,
-        'response' => [
-            'code' => 500,
-            'description' => 'Internal Server Error',
-            'message' => NULL
-        ]
+        'exception' => NULL,
     ];
 
     public static function get($CompositeKey = NULL)
