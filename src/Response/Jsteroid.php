@@ -14,7 +14,6 @@ class Jsteroid
         'message' => NULL,
         'status' => [
             'code' => 500,
-            'description' => 'Internal Server Error',
         ]
     ];
 
